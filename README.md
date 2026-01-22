@@ -14,7 +14,7 @@ The system is architected as a set of decoupled, asynchronous microservices to e
 
 The core retrieval logic solves the "vocabulary mismatch problem" inherent in semantic search by combining two distinct indexing strategies.
 
-![Hybrid Search](data/demo.gif)
+![Hybrid Search](data/hybrid.png)
 
 **Dense Retrieval (Semantic):**
 * **Model:** `intfloat/e5-large-v2` (1024 dimensions).
