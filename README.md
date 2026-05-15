@@ -1,4 +1,4 @@
-# FoodGuru: Production-Grade RAG System for Yelp Data
+# FoodGuru: Production-Grade RAG System from the Yelp Data
 
 **FoodGuru** is a high-performance Retrieval-Augmented Generation (RAG) system engineered to provide grounded, location-aware restaurant recommendations. It leverages a **Hybrid Search Architecture** (Dense Vectors + Sparse Keywords) fused with a Cross-Encoder Reranker to retrieve precise context from the Yelp Academic Dataset, which is then synthesized by a 4-bit quantized LLM.
 
@@ -55,14 +55,14 @@ Retrieval is not a single step but a cascade of filters designed to maximize pre
 ```bash
 foodguru/
 ├── data/                    # Storage for pickle, parquet, and vectors
-├── config.py                # Centralized configuration (Models, Paths, URLs)
-├── pipeline.py              # ETL Step 1: Raw Data Preprocessing
-├── chunker.py               # ETL Step 2: Semantic Chunking
-├── embedder.py              # ETL Step 3: Vector & BM25 Generation
-├── ingestor.py              # ETL Step 4: Qdrant Ingestion
-├── retrieval_service.py     # Core Logic: Hybrid Search & Reranking Class
-├── retriever.py             # API Wrapper for Retrieval Service (Port 8000)
-├── generator.py             # Core Logic: LLM Loading & Prompt Building
+├── config.py                # Centralized configuration
+├── pipeline.py              # Raw Data Preprocessing
+├── chunker.py               # Semantic Chunking
+├── embedder.py              # Vector & BM25 Generation
+├── ingestor.py              # Qdrant Ingestion
+├── retrieval_service.py     # Hybrid Search & Reranking Class
+├── retriever.py             # API Wrapper for Retrieval Service 
+├── generator.py             # LLM Loading & Prompt Building
 ├── generator_app.py         # API Wrapper for Generator Service (Port 9000)
 ├── e5_server.py             # Standalone Embedding Microservice (Port 5000)
 ├── run_servers.py           # Orchestrator to launch all microservices
@@ -125,11 +125,9 @@ docker run -d -p 6333:6333 -p 6334:6334 \
 Create a `.env` file in the root directory:
 
 ```ini
-# .env
 QDRANT_URL=http://localhost:6333
 QDRANT_API_KEY=  # Leave blank for local instance
 
-# Internal Service Communication
 E5_URL=http://127.0.0.1:5000/embed
 RETRIEVER_URL=http://127.0.0.1:8000/retrieve
 
